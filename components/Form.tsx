@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Input from "./Input";
 
 export default function Form() {
     const [formData, setFormData] = useState({ id: 0, title: '', text: '' });
@@ -29,17 +30,14 @@ export default function Form() {
         method="post"
         action="#"
       >
-        <label htmlFor="Firstname">
-            Fornavn
-        </label>
-        <input
+        <Input
+            label="Fornavn"
             name="Firstname"
             id="Firstname"
             type="text"
             placeholder="Fornavn..."
-            //value={formData.title}
-            //onChange={formHandler}
         />
+            
 
         <label htmlFor="Lastname">
             Etternavn
