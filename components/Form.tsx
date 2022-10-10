@@ -2,26 +2,22 @@ import React, { useState } from "react";
 import Input from "./Input";
 
 export default function Form() {
-    const [formData, setFormData] = useState({ id: 0, title: '', text: '' });
+    const [formData, setFormData] = useState({ firstname: "", lastname: "", age: "", email: "" });
 
-    const formHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const inputName = e.target.name;
-      const inputValue = e.target.value;
-      const oldForm = { ...formData };
-      const updateForm = { ...oldForm, ...{ [inputName]: inputValue } };
-      setFormData(updateForm);
-    };
-  
-    const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
+    
+
+    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>): void =>{
+      const {name, value} = e.currentTarget
+      console.log(name, value)
+      setFormData((formData) => ({...formData, [name]: value}) )
+    }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      if (formData.title === '' || formData.text === '') {
-        return;
-      }
-      formData.id = new Date().getTime();
-      //setData([...data, { ...formData }]);
-      const newFormData = { ...formData, ...{ id: 0, title: '', text: '' } };
-      setFormData(newFormData);
-    };
+      const resetFormData = { ...formData, ...{ firstname: "", lastname: "", age: "", email: "" } }
+      setFormData( (formData) => ( {...formData, ...resetFormData} ) )
+      console.log(formData)
+    }
   
     return (
       <form
@@ -29,50 +25,43 @@ export default function Form() {
         //onSubmit={handleSubmit}
         method="post"
         action="#"
+        onSubmit={handleSubmit}
       >
         <Input
             label="Fornavn"
-            name="Firstname"
-            id="Firstname"
+            name="firstname"
+            id="firstname"
             type="text"
             placeholder="Fornavn..."
+            handleOnChange={handleOnChange}
+            value={formData.firstname}
         />
-            
-
-        <label htmlFor="Lastname">
-            Etternavn
-        </label>
-        <input
-            name="Lastname"
-            id="Lastname"
+        <Input
+            label="Etternavn"
+            name="lastname"
+            id="lastname"
             type="text"
             placeholder="Etternavn..."
-            //value={formData.title}
-            //onChange={formHandler}
-        />
-
-        <label htmlFor="age">
-            Alder
-        </label>
-        <input
+            handleOnChange={handleOnChange}
+            value={formData.lastname}
+        /> 
+        <Input
+            label="Alder"
             name="age"
             id="age"
             type="number"
             placeholder="Alder..."
-            //value={formData.title}
-            //onChange={formHandler}
+            handleOnChange={handleOnChange}
+            value={formData.age}
         />
-
-        <label htmlFor="email">
-            E-postadresse
-        </label>
-        <input
-            name="email"
-            id="email"
-            type="email"
-            placeholder="E-postadresse..."
-            //value={formData.title}
-            //onChange={formHandler}
+        <Input
+          label="E-post"
+          name="email"
+          id="email"
+          type="email"
+          placeholder="E-post..."
+          handleOnChange={handleOnChange}
+            value={formData.email}
         />
         <button id="button" type="submit">
           Send

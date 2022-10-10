@@ -4,9 +4,11 @@ type Props = {
     type: string,
     name: string,
     placeholder: string
+    handleOnChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    value: string
 }
 
-export default function Input({label, id, type, name, placeholder}: Props) {
+export default function Input({label, id, type, name, placeholder, handleOnChange, value}: Props) {
     return (
         <>
             <label htmlFor={id}>
@@ -17,9 +19,8 @@ export default function Input({label, id, type, name, placeholder}: Props) {
                 id={id}
                 type={type}
                 placeholder={placeholder}
-                //onFocus={}
-                //value={formData.title}
-                //onChange={formHandler}
+                value={value}
+                onChange={handleOnChange}
             />
         </>
     )
