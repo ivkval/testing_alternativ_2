@@ -1,3 +1,7 @@
-export default function Title() {
-    return <h1>Påmeldingsskjema</h1>
+type Title = {
+    title: string
+}
+
+export default function Title(props: Title) {
+    return <h1>{ props.title }</h1>
 }
