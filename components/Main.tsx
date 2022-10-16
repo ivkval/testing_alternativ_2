@@ -1,5 +1,5 @@
 type Props = {
-    children: React.ReactNode | React.ReactNode[]
+    children: React.ReactNode
 }
 
 export default function Main({ children }: Props) {
