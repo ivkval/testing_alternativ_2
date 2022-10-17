@@ -8,7 +8,7 @@ type ButtonProps = {
 
 export default function Button({id, style, text, onClick, value }: ButtonProps) {
     return <button 
-                data-testid={`button-${id}`}
+                data-testid={`button`}
                 className={style}
                 onClick={onClick}
                 value={value}
