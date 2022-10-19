@@ -5,12 +5,14 @@ import Counter from "./Counter";
 export default function CounterContainer() {
     const [count, setCount] = useState(0)
 
-    const decrement = (e: any) => {
-        setCount(count => count - Number(e.target.value))
+    const decrement = (e: React.MouseEvent<HTMLButtonElement>) => {
+        const value = (e.target as HTMLButtonElement).value
+        setCount(count => count - Number(value))
     }
 
-    const increment = (e: any) => {
-        setCount(count => count + Number(e.target.value))
+    const increment = (e: React.MouseEvent<HTMLButtonElement>) => {
+        const value = (e.target as HTMLButtonElement).value
+        setCount(count => count + Number(value))
     }
 
     return (

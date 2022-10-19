@@ -1,8 +1,8 @@
 import Button from "./Button";
 
 type ButtonsProps = {
-    decrement: Function
-    increment: Function
+    decrement: (e: React.MouseEvent<HTMLButtonElement>) => void
+    increment: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 export default function Buttons({ decrement, increment }: ButtonsProps) {
